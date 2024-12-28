@@ -1,3 +1,8 @@
+a{
+    text-decoration: none;
+    color: black;
+}
+
 #PageHeader{
     display: flex;
 
@@ -17,10 +22,6 @@
         gap: 12px;
         display: flex;
 
-        a{
-            text-decoration: none;
-            color: black;
-        }
     }
 }
 

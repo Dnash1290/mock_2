@@ -1,0 +1,36 @@
+#home-search{
+    display: flex;
+
+    height: 1000px;
+    width: 1865px;
+    background-image: url("../../Components/Images/Home_search_banner.jpg");
+    background-position: bottom;
+    justify-content: center;
+}
+
+.search-form{
+    margin-top: 300px;
+    display:flex;
+    
+    input{
+        font-size: 25px;
+        width: 500px;
+        height: 35px;
+    }
+
+    button{
+        text-decoration: none;
+        height: 38px;
+        width: 48px;
+        background-image: url("../../Components/Images/Icons/search_28dp_000000_FILL0_wght400_GRAD0_opsz24.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-color: white;
+
+        border: none;
+        margin-left: -50px;
+        margin-top: 1px;
+    }
+   
+}

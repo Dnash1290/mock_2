@@ -3,7 +3,7 @@ import "./PageFooter.css"
 export default function PageFooter(){
     return(
         <>
-            Page footer
+            <div id="footer-page" >Page footer</div>
         </>
     )
 }
