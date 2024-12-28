@@ -1,0 +1,36 @@
+#PageHeader{
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-colour);
+    
+
+    padding: 12px;
+    height: 70px;
+    border-radius: 4px;
+    box-shadow: 1px 3px 5px;
+    
+    >div{
+        
+        align-items: center;
+        gap: 12px;
+        display: flex;
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+}
+
+
+#login-button{
+    background-color: var(--main-colour);
+    padding: 6px;
+    border-radius: 4px;
+}
+
+#header-icon{
+    height: 50px;
+}

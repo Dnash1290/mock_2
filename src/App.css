@@ -1,0 +1,12 @@
+body {
+    box-sizing: 0px;
+    margin: 0px;
+
+    font-size: 23px;
+    --primary-colour: #BF9A56;
+    --secondry-colour: #F28963;
+    --main-colour: #F24405;
+    --background: #F2F2F0;
+    --green: #736002;
+
+}

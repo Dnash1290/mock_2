@@ -1,11 +1,17 @@
 
 import './App.css';
+import Pages from './Pages';
+import PageHeader from './Components/PageBody/PageHeader';
+import PageFooter from './Components/PageBody/PageFooter';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <PageHeader/>
+      <Pages/>
+      <PageFooter/>
+    </>
 
-    </div>
   );
 }
 
