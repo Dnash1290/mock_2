@@ -1,0 +1,75 @@
+#auth-container{
+    display: flex;
+    justify-content: center;
+
+    height: 800px;
+    margin-top: 32px;
+
+    img{
+        width: 600px;
+    }
+}
+
+
+#auth{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    border: 3px solid red;
+    width: 600px;
+    background-color: var(--background);
+    filter: blur(100px);
+    filter: opacity(70%);
+        
+}
+
+.auth-head-text{
+    margin: 100px;
+    font-size: 42px;
+}
+
+#auth-background{
+    display: flex;
+
+    height: 1000px;
+    width: 1865px;
+    background-image: url("../../Components/Images/Home_search_banner.jpg");
+    background-position: bottom;
+    justify-content: center;
+}
+
+
+.input-class, .auth-input-button {
+    width: 400px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: none;
+    border-bottom: 1px solid black;
+
+
+}
+
+.auth-input-button{
+    width:408px;
+    margin-top: 20px;
+    background-color: var(--main-colour);
+}
+
+.auth-input-text{
+    margin-bottom: 10px;
+}
+
+#auth-nav-links{
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-top: 20px;
+
+    border: 1px solid red;
+    a{
+        font-size: 17px;
+    }
+}

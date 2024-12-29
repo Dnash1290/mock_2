@@ -14,11 +14,9 @@ export default function Home(){
                     value={searchLocation}
                     onChange={(e) => setSearchLocation(e.target.value)}
                 />
-                <button type="submit" onClick={
-                    () => alert(searchLocation)
-                }> 
-                    
-                </button>
+                <a href="/search">
+                    <button type="submit" ></button>
+                </a>
             </form>
         </div>
     );
