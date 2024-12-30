@@ -25,9 +25,12 @@
         
 }
 
-.auth-head-text{
+.auth-head-text, .auth-head{
     margin: 100px;
     font-size: 42px;
+}
+.auth-head{
+    margin: 50px;
 }
 
 #auth-background{
@@ -65,7 +68,10 @@
 #auth-nav-links{
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    /* y does this not work?? */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    width: 408px;
     margin-top: 20px;
 
     border: 1px solid red;
