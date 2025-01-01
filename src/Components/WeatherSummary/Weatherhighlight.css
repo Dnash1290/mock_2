@@ -4,3 +4,15 @@
     margin-left: 30px;
     margin-right: 30px;
 }
+
+#weather-left-container{
+    display: flex;
+}
+
+.temp-text{
+    font-size: 20px;
+}
+
+.temp-text-main{
+    font-size: 32px;
+}

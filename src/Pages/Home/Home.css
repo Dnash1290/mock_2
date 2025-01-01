@@ -2,7 +2,7 @@
     display: flex;
 
     height: 1000px;
-    width: 1865px;
+    width: auto;
     background-image: url("../../Components/Images/Home_search_banner.jpg");
     background-position: bottom;
     justify-content: center;
