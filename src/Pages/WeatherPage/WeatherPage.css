@@ -1,0 +1,10 @@
+.middle-flex{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    a{
+        margin: 12px;
+        margin-top: 20px;
+    }
+}

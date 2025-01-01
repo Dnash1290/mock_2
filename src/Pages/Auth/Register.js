@@ -12,13 +12,13 @@ export default function Register(){
 
     function checkPassword(){
         if (password === confirmPass){
-            return;
+            return
         }
         alert("password did not match with the confirm password")
     }
 
     return(
-        <div id="auth-background">
+        <div className="background">
             <div id="auth-container">
                 <img src={authImg}/>
                 <div id="auth">

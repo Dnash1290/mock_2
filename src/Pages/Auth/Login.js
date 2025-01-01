@@ -7,8 +7,8 @@ export default function Login(){
     const [password, setPassword] = useState ("")
 
     return(
-        <div id="auth-background">
-            <div id="auth-container">
+        <div className="background">
+            <div className="container">
                 <img src={authImg}/>
                 <div id="auth">
                     <div className="auth-head-text">Log in</div>
