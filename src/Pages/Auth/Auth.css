@@ -54,6 +54,8 @@
     background-image: url("../../Components/Images/Home_search_banner.jpg");
     background-position: bottom;
     justify-content: center;
+    padding-left: 52px;
+    padding-right: 52px;
 }
 
 .weather-background{

@@ -1,0 +1,15 @@
+#footer-page{
+    background-color: var(--primary-colour);
+    height: 100px;
+}
+
+#footer-title{
+    font-size: 52px;
+    font-weight: bold;
+}
+#social-medias{
+    width: 300px;
+    img{
+        height: 50px;
+    }
+}

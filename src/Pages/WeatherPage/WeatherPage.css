@@ -8,3 +8,8 @@
         margin-top: 20px;
     }
 }
+
+#main-weather-flex{
+    display: flex;
+    gap: 2px;
+}

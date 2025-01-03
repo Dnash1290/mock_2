@@ -1,5 +1,5 @@
 import "./Weatherhighlight.css"
-import tempIcon from "../../Components/Images/Icons/thermometer.png"
+import tempIcon from "../../Images/Icons/thermometer.png"
 
 
 export default function WeatherSummary(){
