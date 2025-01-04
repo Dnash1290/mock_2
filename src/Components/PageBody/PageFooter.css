@@ -1,15 +1,26 @@
 #footer-page{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures vertical alignment */
     background-color: var(--primary-colour);
-    height: 100px;
+    height: 140px;
 }
 
 #footer-title{
-    font-size: 52px;
+    font-size: 48px;
     font-weight: bold;
+    
 }
 #social-medias{
-    width: 300px;
+    position: absolute;
+    left: 43%;
     img{
         height: 50px;
     }
+}
+
+#contacts{
+    
+    div{font-size: 18px;}
+    
 }

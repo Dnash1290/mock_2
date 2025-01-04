@@ -9,7 +9,10 @@ export default function PageFooter(){
     return(
    
         <div id="footer-page" >
-            <div id="footer-title">Health Advice Group</div>
+            <div id="footer-title">
+                <div>Health Advice</div>
+                <div>Group</div>
+            </div>
             <div id="social-medias">
                 <a href="#"><img src={ytIcon}/></a>
                 <a href="#"><img src={twitterIcon}/></a>
@@ -18,7 +21,10 @@ export default function PageFooter(){
                 <a href="#"><img src={facekbookIcon}/></a>
             </div>
             <div id="contacts">
-
+                Contacts
+                <div>07346 54634</div>
+                <div>HealthGroup@gmail.com</div>
+                <div>About Us</div>
             </div>
         </div>
 
