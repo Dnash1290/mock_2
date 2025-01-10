@@ -6,7 +6,6 @@ import axios from "axios";
 export default function Home(){
     const [searchLocation, setSearchLocation] = useState("");
     const navigate = useNavigate()
-    const fs = require('fs');
 
     function search_helper(){
         const cityName = searchLocation
@@ -18,13 +17,7 @@ export default function Home(){
         axios.get(ENDPOINT)
         .then(response => {
             const data = JSON.stringify(response.data, null, 2)
-            fs.writeFile("weatherData.json", data, (error) => {
-                if (!error){
-                    console.log("file saved")
-                    return
-                }
-                console.error("error as occured", error.message)
-            })
+            localStorage.setItem("weather_data",data)
         })
 
     }
