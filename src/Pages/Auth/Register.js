@@ -2,6 +2,9 @@
 import "./Auth.css"
 import authImg from "../../Components/Images/flower_auth.jpg"
 import { useState } from "react"
+import { useContext } from "react"
+import { Context } from "../../UseContextData/Data"
+import axios from "axios"
 
 export default function Register(){
     const[fname, setFname] = useState("")
@@ -10,11 +13,32 @@ export default function Register(){
     const [password, setPassword] = useState ("")
     const [confirmPass, setConfirmPass] = useState("")
 
-    function checkPassword(){
-        if (password === confirmPass){
+    const { login } = useContext(Context);
+
+    function POST_data(){
+        if (password !== confirmPass){
+            alert("password did not match with the confirm password")
             return
         }
-        alert("password did not match with the confirm password")
+        alert("this function ran")
+
+        const ENDPOINT = "http://127.0.0.1:300"
+
+        const DATA = {
+            "name": fname,
+            "surname": surname,
+            "username": username,
+            "password": password
+        }
+
+        axios.post(ENDPOINT,DATA)
+        .then(response =>{
+            login(response.data)
+            console.log("i got your data")
+        })
+        .catch(error =>{
+            alert(error?.response?.data?.detail)
+        })
     }
 
     return(
@@ -23,7 +47,7 @@ export default function Register(){
                 <img src={authImg}/>
                 <div id="auth">
                     <div className="auth-head">Register</div>
-                    <form>
+                    <form onSubmit={POST_data}>
                         <div className="auth-input-text">Name
                             <br/>
                         <input
@@ -81,7 +105,7 @@ export default function Register(){
                         />
                         </div>
                         
-                        <button className="auth-input-button" onClick={checkPassword}>Register</button>
+                        <button className="auth-input-button" >Register</button>
                     </form>
                     <div id="auth-nav-links">
                         <a href="/" className="auth-nav">Forgot Password?</a>

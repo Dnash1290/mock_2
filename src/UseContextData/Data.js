@@ -1,10 +1,14 @@
 import { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const navigate = useNavigate()
-export const context = createContext()
+
+export const Context = createContext()
+
+
 
 export function UserData({children}){
+    const navigate = useNavigate()
+
     const [userData, setUserData] = useState(
         JSON.parse(localStorage.getItem("user")) || null
     )
@@ -22,6 +26,6 @@ export function UserData({children}){
     }
 
     return(
-        <useContext.Provider value={{login, logout, UserData}}>{children}</useContext.Provider>
+        <Context.Provider value={{login, logout, UserData}}>{children}</Context.Provider>
     )
 }
