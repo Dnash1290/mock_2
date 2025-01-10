@@ -1,17 +1,40 @@
 import "./Home.css"
 import { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Home(){
     const [searchLocation, setSearchLocation] = useState("");
     const navigate = useNavigate()
+    const fs = require('fs');
 
+    function search_helper(){
+        const cityName = searchLocation
+        const limit = 3
+        const apiKey = "16498a6b6652ecfa4fe8007afa19e506"
+        const ENDPOINT = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${apiKey}`;
+        
+
+        axios.get(ENDPOINT)
+        .then(response => {
+            const data = JSON.stringify(response.data, null, 2)
+            fs.writeFile("weatherData.json", data, (error) => {
+                if (!error){
+                    console.log("file saved")
+                    return
+                }
+                console.error("error as occured", error.message)
+            })
+        })
+
+    }
 
     function search(event){
         alert("dafasfasfa")
         event.preventDefault()
-        const link = "/search?q=" + searchLocation;
-        navigate(link)
+        //const link = "/search?q=" + searchLocation;
+        //navigate(link)
+        search_helper()
     }
 
 

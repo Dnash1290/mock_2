@@ -2,7 +2,7 @@ import "./Weatherhighlight.css"
 import tempIcon from "../../Images/Icons/thermometer.png"
 
 
-export default function WeatherSummary(){
+export default function WeatherSummary({api_data}){
     const temperture = 9
     const feel_temperture = 7
     const location = "Southall, London"

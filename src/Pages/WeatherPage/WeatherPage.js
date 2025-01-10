@@ -4,11 +4,13 @@ import WeatherSummary from "../../Components/Weather/WeatherSummary/WeatherSumma
 import WeatherMain from "../../Components/Weather/WeatherMain/WeatherMain"
 
 export default function WeatherPage(){
+
+
     return(
         
         <div className="weather-background">
             <div className="middle-flex"><a>Weather</a><a>Heatlh</a></div>
-            <WeatherSummary/>
+            <WeatherSummary />
             <div id="main-weather-flex">
                 <WeatherMain/>
                 <WeatherMain/>
