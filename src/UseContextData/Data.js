@@ -1,27 +1,32 @@
-import { useContext, createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const navigate = useNavigate()
-export const context = createContext()
+
+const UserContext = createContext()
+
+export function useUser(){
+    return  useContext(UserContext)
+}
 
 export function UserData({children}){
+    const navigate = useNavigate()
     const [userData, setUserData] = useState(
         JSON.parse(localStorage.getItem("user")) || null
-    )
+    )*
 
     function login(userdata){
         localStorage.setItem("user",JSON.stringify(userdata)) // save data in brower
-        navigate("/home") //nevigate to there
         setUserData(userdata)
+        navigate("/home") //nevigate to there
     }
 
-    function logout(userdata){
+    function logout(){
         localStorage.removeItem("user")
         navigate("/login")
         setUserData(null)
     }
 
     return(
-        <useContext.Provider value={{login, logout, UserData}}>{children}</useContext.Provider>
+        <UserContext.Provider value={{ login, logout, userData}}>{children}</UserContext.Provider>
     )
 }
