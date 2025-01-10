@@ -3,19 +3,19 @@ import "./Auth.css"
 import authImg from "../../Components/Images/flower_auth.jpg"
 import { useState } from "react"
 import axios from "axios"
-
-// import { useContext } from "react"
-// import { UserContext } from "../../UseContextData/Data"
-import { useUser } from "../../UseContextData/Data"
+import { useContext } from "react"
+import { Context } from "../../UseContextData/Data"
 
 export default function Register(){
+    const {login} =useContext(Context)
+
     const[fname, setFname] = useState("")
     const [surname, setSurname] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState ("")
     const [confirmPass, setConfirmPass] = useState("")
     const [Error, setError]= useState("")
-    const {login} = useUser()
+    
 
 
     function postData(event){

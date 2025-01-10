@@ -2,17 +2,13 @@ import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const UserContext = createContext()
-
-export function useUser(){
-    return  useContext(UserContext)
-}
+export const Context = createContext()
 
 export function UserData({children}){
     const navigate = useNavigate()
     const [userData, setUserData] = useState(
         JSON.parse(localStorage.getItem("user")) || null
-    )*
+    )
 
     function login(userdata){
         localStorage.setItem("user",JSON.stringify(userdata)) // save data in brower
@@ -27,6 +23,6 @@ export function UserData({children}){
     }
 
     return(
-        <UserContext.Provider value={{ login, logout, userData}}>{children}</UserContext.Provider>
+        <Context.Provider value={{ login, logout, userData}}>{children}</Context.Provider>
     )
 }
