@@ -19,10 +19,9 @@
 
     box-shadow: 3px 8px 6px black;
     width: 600px;
-    background-color: var(--background);
-    filter: blur(100px);
-    filter: opacity(70%);
-        
+    background-color: rgba(242, 242, 240, 0.3);
+    backdrop-filter:blur(10px);
+    /* filter: blur(100px); */  
 }
 
 .auth-head-text, .auth-head{
@@ -91,8 +90,6 @@
     /* margin-right: auto; */
     width: 408px;
     margin-top: 20px;
-
-    border: 1px solid red;
     a{
         font-size: 17px;
     }
