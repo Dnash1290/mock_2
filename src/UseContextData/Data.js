@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export const Context = createContext()
+export const ApiContext = createContext()
 
 export function UserData({children}){
     const navigate = useNavigate()
@@ -25,4 +26,16 @@ export function UserData({children}){
     return(
         <Context.Provider value={{ login, logout, userData}}>{children}</Context.Provider>
     )
+}
+
+export function Api_Data({children}){
+    const [locationWeather, setLocationWeather] = useState(
+        JSON.parse(localStorage.getItem("location_weather"))|| null
+    )
+    function current_weather(api_data){
+        localStorage.setItem("location_weather",JSON.stringify(api_data))
+        setLocationWeather(api_data)
+    }
+
+    return(<ApiContext.Provider value={{locationWeather}} >{children}</ApiContext.Provider>)
 }
