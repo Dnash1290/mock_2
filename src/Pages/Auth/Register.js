@@ -14,9 +14,7 @@ export default function Register(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState ("")
     const [confirmPass, setConfirmPass] = useState("")
-    const [Error, setError]= useState("")
-    
-
+    const [error, setError]= useState("")
 
     function postData(event){
         event.preventDefault()
@@ -44,7 +42,6 @@ export default function Register(){
             setError(response.Error)
             alert(response.Error);
         })
-    
     }
 
     return(
@@ -110,7 +107,7 @@ export default function Register(){
                             // onInvalid={(e)=>alert("yofgvkliodewsj ")}
                         />
                         </div>
-                        
+                        {error? <div>{error}</div>:null}
                         <button className="auth-input-button">Register</button>
                     </form>
                     <div id="auth-nav-links">

@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';  //did i didnt write this
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { UserData } from './UseContextData/Data';
+import { UserData, Api_Data } from './UseContextData/Data';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
     <UserData>
-      <App />
+      <Api_Data>
+        <App />
+      </Api_Data>
     </UserData>
     </BrowserRouter>
   </React.StrictMode>

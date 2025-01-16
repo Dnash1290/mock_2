@@ -2,25 +2,26 @@ import "./Home.css"
 import { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ApiContext } from "../../UseContextData/Data";
+import { useContext } from "react";
 
 export default function Home(){
     const [searchLocation, setSearchLocation] = useState("");
     const navigate = useNavigate()
-
-    // function search_helper(){
-    //     const cityName = searchLocation
-    //     const limit = 3
-    //     const apiKey = "16498a6b6652ecfa4fe8007afa19e506"
-    //     const ENDPOINT = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${apiKey}`;
+    const {set_location_weather, apiKey} = useContext(ApiContext)
+    
+    function search_helper(){
+        const cityName = searchLocation
+        const limit = 3
         
+        const ENDPOINT = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limit}&appid=${apiKey}`; 
+        axios.get(ENDPOINT)
+        .then(response => {
+            set_location_weather(response.data)
+            navigate(`/${searchLocation}`)
+        })
 
-    //     axios.get(ENDPOINT)
-    //     .then(response => {
-    //         const data = JSON.stringify(response.data, null, 2)
-    //         localStorage.setItem("weather_data",data)
-    //     })
-
-    // }
+    }
 
     function search(event){
         alert("dafasfasfa")

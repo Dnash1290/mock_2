@@ -29,13 +29,29 @@ export function UserData({children}){
 }
 
 export function Api_Data({children}){
+
+    const apiKey = "16498a6b6652ecfa4fe8007afa19e506"
+
     const [locationWeather, setLocationWeather] = useState(
         JSON.parse(localStorage.getItem("location_weather"))|| null
     )
-    function current_weather(api_data){
+    const [CurrentWeather, setCurrentWeather] = useState(
+        JSON.parse(localStorage.getItem("location_weather"))|| null
+    )
+
+    function set_location_weather(api_data){
         localStorage.setItem("location_weather",JSON.stringify(api_data))
         setLocationWeather(api_data)
     }
 
-    return(<ApiContext.Provider value={{locationWeather}} >{children}</ApiContext.Provider>)
+    function current_weather(){
+        const lat = locationWeather["lat"]
+        const lon = locationWeather["lon"]
+        const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lat}&appid=${apiKey}`
+    }
+
+
+    return(<ApiContext.Provider value={
+        {locationWeather, set_location_weather, current_weather, CurrentWeather, apiKey}
+    } >{children}</ApiContext.Provider>)
 }

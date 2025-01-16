@@ -2,13 +2,13 @@ import "./Auth.css"
 import authImg from "../../Components/Images/flower_auth.jpg"
 import { useState } from "react"
 import { useContext } from "react"
-import { Context } from "../../UseContextData/Data"
+import { Context, UserData } from "../../UseContextData/Data"
 import axios from "axios"
 
 export default function Login(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState ("")
-
+    const [error, setError] = useState(null)
     const {login} = useContext(Context)
 
     function fetch_login(event){
@@ -21,11 +21,9 @@ export default function Login(){
         axios.post(ENDPOINT,data)
         .then(response => {
             login(response.data)
-            alert("you have log in")
         })
-        .catch(response =>{
-            
-            alert(response.Error);
+        .catch(error =>{
+            setError(error?.response?.data?.detail || "Error occured")
         })
     } 
 
@@ -57,6 +55,7 @@ export default function Login(){
                         />
                         </div>
                         <button className="auth-input-button" type="Submit">Login</button>
+                        {error? <div style={{color:"red"}}>{error}</div>:null}
                     </form>
                     <div id="auth-nav-links">
                         <a href="/" className="auth-nav">Forgot Password?</a>
