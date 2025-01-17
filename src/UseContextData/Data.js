@@ -39,6 +39,9 @@ export function Api_Data({children}){
     const [CurrentWeather, setCurrentWeather] = useState(
         JSON.parse(localStorage.getItem("current_weather"))|| null
     )
+    const [WeatherForcast, setWeatherForcast] = useState(
+        JSON.parse(localStorage.getItem("weather_forcast")) || null
+    )
 
     function set_location_weather(api_data){
         localStorage.setItem("location_weather",JSON.stringify(api_data))
@@ -48,7 +51,7 @@ export function Api_Data({children}){
     function current_weather(){
         const lat = locationWeather[0]["lat"]
         const lon = locationWeather[0]["lon"]
-        const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
         
         axios.get(ENDPOINT)
         .then(response => {
@@ -58,8 +61,14 @@ export function Api_Data({children}){
         .catch(error => console.log(error))
     }
 
+    function weather_forcast(){
+        const ENDPOINT = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+        
+    }
+
 
     return(<ApiContext.Provider value={
-        {locationWeather, set_location_weather, current_weather, CurrentWeather, apiKey}
+        {locationWeather, set_location_weather, current_weather,
+        CurrentWeather, apiKey, weather_forcast}
     } >{children}</ApiContext.Provider>)
 }
