@@ -48,9 +48,26 @@ export function Api_Data({children}){
         setLocationWeather(api_data)
     }
 
+    let lon = ""
+    let lat = "" 
+    
+    function weather_forcast(){
+    
+        const ENDPOINT = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+        axios.get(ENDPOINT)
+        .then(respone => {
+            setCurrentWeather(respone.data)
+            localStorage.setItem("weather_forcast",JSON.stringify(respone.data))
+        })
+        .catch(error => console.log(error))
+    }
+
     function current_weather(){
-        const lat = locationWeather[0]["lat"]
-        const lon = locationWeather[0]["lon"]
+     
+        lat = locationWeather[0]["lat"]
+        lon = locationWeather[0]["lon"]
+     
+
         const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
         
         axios.get(ENDPOINT)
@@ -59,16 +76,12 @@ export function Api_Data({children}){
             localStorage.setItem("current_weather",JSON.stringify(response.data))
         })
         .catch(error => console.log(error))
-    }
-
-    function weather_forcast(){
-        const ENDPOINT = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-        
+        weather_forcast()
     }
 
 
     return(<ApiContext.Provider value={
         {locationWeather, set_location_weather, current_weather,
-        CurrentWeather, apiKey, weather_forcast}
+        CurrentWeather, apiKey, weather_forcast, WeatherForcast}
     } >{children}</ApiContext.Provider>)
 }

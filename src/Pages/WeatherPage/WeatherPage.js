@@ -8,22 +8,22 @@ import { useContext } from "react"
 import { ApiContext } from "../../UseContextData/Data"
 
 export default function WeatherPage(){  
-    const {CurrentWeather} = useContext(ApiContext)
+    const {CurrentWeather, WeatherForcast} = useContext(ApiContext)
 
     // find a way to check what the user searched for
-    //hint google how to read url query params
+    // hint google how to read url query params
+    let component = []
+    for (let i = 0; i < WeatherForcast["list"].length; i++){
+        component.push(<WeatherMain api_data={WeatherForcast["list"][i]}/>) 
+    }
 
     return(        
         <div className="weather-background">
             <div className="middle-flex"><a>Weather</a><a>Heatlh</a></div>
             <WeatherSummary api_data={CurrentWeather} />
-            {JSON.stringify(CurrentWeather)}
+
             <div id="main-weather-flex">
-                <WeatherMain/>
-                <WeatherMain/>
-                <WeatherMain/>
-                <WeatherMain/>
-                <WeatherMain/>
+                {component}
             </div>
        
         </div>

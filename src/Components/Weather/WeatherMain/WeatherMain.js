@@ -1,16 +1,22 @@
 import "./WeatherMain.css"
-import weatherIcon from "../../Images/Icons/rainy_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"
 import windIcon from "../../Images/Icons/air_wind.png"
 
-export default function WeatherMain(){
+export default function WeatherMain({api_data}){
+    const time = api_data["dt_txt"].split(" ")[1].slice(0,2)
+    const temp = Math.round(api_data["main"]["temp"])
+    const weatherIcon = api_data["weather"][0]["icon"]
+    const wind = api_data["wind"]["speed"] 
+    
     return(
         <div className="main-weather-container">
-            <div className="time">01</div>
-            <img src={weatherIcon}/>
+        
+            <div className="time">{time}</div>
+            <div>{temp}°C</div>
+            <img src={`http://openweathermap.org/img/wn/${weatherIcon}@4x.png`}/>
             <div>3%</div>
             <img src={windIcon}/>
-            <div>12</div>
-            <div className="km-h">km/h</div>
+            <div>{wind}</div>
+            <div className="km-h">m/s</div>
         </div>
     )
 }

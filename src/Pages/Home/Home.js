@@ -20,6 +20,7 @@ export default function Home(){
             set_location_weather(response.data)
             current_weather()
             navigate(`/search/weatherpage?${searchLocation}`)
+          
         })
         .catch(error => {
             console.log(error?.response?.data?.message)

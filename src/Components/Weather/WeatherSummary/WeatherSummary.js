@@ -3,10 +3,10 @@ import tempIcon from "../../Images/Icons/thermometer.png"
 
 
 export default function WeatherSummary({api_data}){
-    const temperture = api_data["list"][0][]
-
-    const feel_temperture = 2
-    const location = api_data["city"]["name"]
+    const temperture = api_data["main"]["temp"]
+    const feel_temperture = api_data["main"]["feels_like"]
+    const location = api_data["name"]
+    const country = api_data["sys"]["country"]
     
     return(
         <div id="weather-summary">
@@ -22,8 +22,8 @@ export default function WeatherSummary({api_data}){
 
         <div id="weather-right-container">
             <div>Location</div>
-            <div className="temp-text">{location}</div>
-            <div className="temp-text">Other information</div>
+            <div className="temp-text">{location},{country}</div>
+            <div className="temp-text">{api_data["weather"][0]["description"]}</div>
             </div>
         </div>
     )
