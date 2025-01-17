@@ -4,29 +4,20 @@ import WeatherSummary from "../../Components/Weather/WeatherSummary/WeatherSumma
 import WeatherMain from "../../Components/Weather/WeatherMain/WeatherMain"
 import { useState } from "react"
 import axios from "axios"
+import { useContext } from "react"
+import { ApiContext } from "../../UseContextData/Data"
 
-export default function WeatherPage(){
-    const [api_data_location, useApi_data_location] = useState(
-        JSON.parse(localStorage.getItem('weather_data'))
-    )
-    const apiKey = "16498a6b6652ecfa4fe8007afa19e506"
-    const lon = api_data_location[0]['lon']
-    const lat = api_data_location[0]['lat']
-    console.log(api_data_location[0])
-    
-    const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
-    axios.get(ENDPOINT)
-    .then(response =>{
-        const data = JSON.stringify(response.data)
-        localStorage.setItem("location_data", data)
-    }).catch(response =>{
-        alert(response.error?.detail)
-    })
+export default function WeatherPage(){  
+    const {CurrentWeather} = useContext(ApiContext)
+
+    // find a way to check what the user searched for
+    //hint google how to read url query params
 
     return(        
         <div className="weather-background">
             <div className="middle-flex"><a>Weather</a><a>Heatlh</a></div>
-            <WeatherSummary  />
+            <WeatherSummary api_data={CurrentWeather} />
+            {JSON.stringify(CurrentWeather)}
             <div id="main-weather-flex">
                 <WeatherMain/>
                 <WeatherMain/>

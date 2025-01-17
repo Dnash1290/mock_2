@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -36,7 +37,7 @@ export function Api_Data({children}){
         JSON.parse(localStorage.getItem("location_weather"))|| null
     )
     const [CurrentWeather, setCurrentWeather] = useState(
-        JSON.parse(localStorage.getItem("location_weather"))|| null
+        JSON.parse(localStorage.getItem("current_weather"))|| null
     )
 
     function set_location_weather(api_data){
@@ -45,9 +46,16 @@ export function Api_Data({children}){
     }
 
     function current_weather(){
-        const lat = locationWeather["lat"]
-        const lon = locationWeather["lon"]
-        const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lat}&appid=${apiKey}`
+        const lat = locationWeather[0]["lat"]
+        const lon = locationWeather[0]["lon"]
+        const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        
+        axios.get(ENDPOINT)
+        .then(response => {
+            setCurrentWeather(response.data)
+            localStorage.setItem("current_weather",JSON.stringify(response.data))
+        })
+        .catch(error => console.log(error))
     }
 
 

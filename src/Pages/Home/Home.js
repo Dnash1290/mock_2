@@ -8,7 +8,7 @@ import { useContext } from "react";
 export default function Home(){
     const [searchLocation, setSearchLocation] = useState("");
     const navigate = useNavigate()
-    const {set_location_weather, apiKey} = useContext(ApiContext)
+    const {set_location_weather,current_weather, apiKey, } = useContext(ApiContext)
     
     function search_helper(){
         const cityName = searchLocation
@@ -18,17 +18,21 @@ export default function Home(){
         axios.get(ENDPOINT)
         .then(response => {
             set_location_weather(response.data)
-            navigate(`/${searchLocation}`)
+            current_weather()
+            navigate(`/search/weatherpage?${searchLocation}`)
+        })
+        .catch(error => {
+            console.log(error?.response?.data?.message)
         })
 
     }
 
     function search(event){
-        alert("dafasfasfa")
+    
         event.preventDefault()
         //const link = "/search?q=" + searchLocation;
         //navigate(link)
-       // search_helper()
+        search_helper()
     }
 
 
@@ -41,7 +45,7 @@ export default function Home(){
                     value={searchLocation}
                     onChange={(e) => setSearchLocation(e.target.value)}
                 />
-                <button type="submit">X</button>
+                <button type="submit"></button>
             </form>
         </div>
     );

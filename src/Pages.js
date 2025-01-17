@@ -11,7 +11,7 @@ export default function Pages(){
                 <Route path="/" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/search" element={<WeatherPage/>}/>
+                <Route path="/search/weatherpage" element={<WeatherPage/>}/>
             </Routes>
         </div>
     )
