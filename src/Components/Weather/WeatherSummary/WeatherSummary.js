@@ -8,6 +8,8 @@ export default function WeatherSummary({api_data}){
     const location = api_data["name"]
     const country = api_data["sys"]["country"]
     
+    if (!api_data){return(<div>Loading....</div>)}
+
     return(
         <div id="weather-summary">
         <div id="weather-left-container">

@@ -12,6 +12,13 @@ export default function WeatherPage(){
 
     // find a way to check what the user searched for
     // hint google how to read url query params
+
+    if (!WeatherForcast){
+        return(
+            <div>Loading data</div>
+        )
+    }
+
     let component = []
     for (let i = 0; i < WeatherForcast["list"].length; i++){
         component.push(<WeatherMain api_data={WeatherForcast["list"][i]}/>) 
@@ -24,6 +31,7 @@ export default function WeatherPage(){
 
             <div id="main-weather-flex">
                 {component}
+                {/* <WeatherMain api_data={WeatherForcast["list"][4]}/> */}
             </div>
        
         </div>
