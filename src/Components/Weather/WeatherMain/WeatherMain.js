@@ -3,7 +3,8 @@ import windIcon from "../../Images/Icons/air_wind.png"
 
 export default function WeatherMain({api_data}){
     const time = api_data["dt_txt"].split(" ")[1].slice(0,2)
-    const temp = Math.round(api_data["main"]["temp"])
+    // const temp = Math.round(api_data["main"]["temp"])
+    const temp = Math.round( api_data.main?.temp || 0 )
     const weatherIcon = api_data["weather"][0]["icon"]
     const wind = api_data["wind"]["speed"] 
     const windDir = api_data["wind"]["deg"]

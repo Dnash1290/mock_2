@@ -2,18 +2,45 @@ import "./WeatherPage.css"
 import containerImg from "../../Components/Images/Home_search_banner.jpg"
 import WeatherSummary from "../../Components/Weather/WeatherSummary/WeatherSummary"
 import WeatherMain from "../../Components/Weather/WeatherMain/WeatherMain"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import { useContext } from "react"
 import { ApiContext } from "../../UseContextData/Data"
+import { useSearchParams } from "react-router-dom";
+
 
 export default function WeatherPage(){  
-    const {CurrentWeather, WeatherForcast} = useContext(ApiContext)
+    const {CurrentWeather, WeatherForcast, set_location_weather,current_weather, apiKey} = useContext(ApiContext)
+    const [isLoading, setIsLoading] = useState("")
 
+    const [searchParams, setSearchParams] = useSearchParams()
+    const location = searchParams.get("location");
+    // const {set_location_weather,current_weather, apiKey, } = useContext(ApiContext)
     // find a way to check what the user searched for
     // hint google how to read url query params
 
-    if (!WeatherForcast){
+    useEffect(() => {
+
+        const limit = 3
+        
+        const ENDPOINT = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=${limit}&appid=${apiKey}`; 
+        axios.get(ENDPOINT)
+        .then(response => {
+            set_location_weather(response.data)
+            current_weather()
+            // navigate(`/search/weatherpage?location=${searchLocation}`)
+            setIsLoading(false)
+          
+        })
+        .catch(error => {
+            // setIsLoading(false);
+            console.log(error?.response?.data?.message)
+        })
+    }, [])
+
+
+
+    if (!isLoading){
         return(
             <div>Loading data</div>
         )

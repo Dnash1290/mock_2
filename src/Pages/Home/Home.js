@@ -5,6 +5,7 @@ import axios from "axios";
 import { ApiContext } from "../../UseContextData/Data";
 import { useContext } from "react";
 
+
 export default function Home(){
     const [searchLocation, setSearchLocation] = useState("");
     const navigate = useNavigate()
@@ -19,7 +20,7 @@ export default function Home(){
         .then(response => {
             set_location_weather(response.data)
             current_weather()
-            navigate(`/search/weatherpage?${searchLocation}`)
+            navigate(`/search/weatherpage?location=${searchLocation}`)
           
         })
         .catch(error => {
@@ -31,9 +32,10 @@ export default function Home(){
     function search(event){
     
         event.preventDefault()
+        navigate(`/search/weatherpage?location=${searchLocation}`)
         //const link = "/search?q=" + searchLocation;
         //navigate(link)
-        search_helper()
+        // search_helper()
     }
 
 
