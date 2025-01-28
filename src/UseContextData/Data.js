@@ -58,6 +58,8 @@ export function Api_Data({children}){
         .then(respone => {
             setCurrentWeather(respone.data)
             localStorage.setItem("weather_forcast",JSON.stringify(respone.data))
+            console.log("weather forcast",WeatherForcast)
+            console.log("location", locationWeather)
         })
         .catch(error => console.log(error))
     }
@@ -74,6 +76,7 @@ export function Api_Data({children}){
         .then(response => {
             setCurrentWeather(response.data)
             localStorage.setItem("current_weather",JSON.stringify(response.data))
+            console.log("current weather",CurrentWeather)
         })
         .catch(error => console.log(error))
         weather_forcast()

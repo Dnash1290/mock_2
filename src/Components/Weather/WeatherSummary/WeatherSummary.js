@@ -3,6 +3,7 @@ import tempIcon from "../../Images/Icons/thermometer.png"
 
 
 export default function WeatherSummary({api_data}){
+    console.log(api_data)
     const temperture = api_data.main?.temp || 0
     const feel_temperture = api_data.main?.feels_like || ""
     const location = api_data["name"]
