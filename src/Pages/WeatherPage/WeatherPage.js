@@ -22,7 +22,7 @@ export default function WeatherPage(){
     useEffect(() => {
 // sir new problem the  isloading function is not updating
         const limit = 3
-        
+        console.log("Set to false")
         const ENDPOINT = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=${limit}&appid=${apiKey}`; 
         axios.get(ENDPOINT)
         .then(response => {
