@@ -39,11 +39,11 @@ export default function WeatherPage(){
             // setIsLoading(false);
             console.log(error?.response?.data?.message)
         })
-    }, [])
+    }, [location])
 
 
 
-    if (!isLoading){
+    if (isLoading){
         return(
             <div>Loading data</div>
         )
