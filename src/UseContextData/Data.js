@@ -64,10 +64,10 @@ export function Api_Data({children}){
         .catch(error => console.log(error))
     }
 
-    function current_weather(){
+    function current_weather(cod){
      
-        lat = locationWeather[0]["lat"]
-        lon = locationWeather[0]["lon"]
+        lat = cod[0]["lat"]
+        lon = cod[0]["lon"]
         console.log("current weather before api call",CurrentWeather)
 
         const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`

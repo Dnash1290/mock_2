@@ -27,11 +27,11 @@ export default function WeatherPage(){
         axios.get(ENDPOINT)
         .then(response => {
             set_location_weather(response.data)
-            current_weather()
-            // navigate(`/search/weatherpage?location=${searchLocation}`)
+            current_weather(response.data)
+            // // navigate(`/search/weatherpage?location=${searchLocation}`)
             setIsLoading(false)
-            console.log("Set to false")
-            console.log(isLoading)
+            // console.log("Set to false")
+            // console.log(isLoading)
             
             
         })
@@ -40,10 +40,6 @@ export default function WeatherPage(){
             console.log(error?.response?.data?.message)
         })
     }, [location])
-
-    useEffect(()=> {
-
-    }, [locationWeather])
 
 
     if (isLoading){
