@@ -8,9 +8,10 @@ import { useContext } from "react"
 import { ApiContext } from "../../UseContextData/Data"
 import { useSearchParams } from "react-router-dom";
 
+import { NavLink } from "react-router-dom"
 
 export default function WeatherPage(){  
-    const {CurrentWeather, locationWeather, WeatherForcast, set_location_weather,current_weather, apiKey} = useContext(ApiContext)
+    const {CurrentWeather, WeatherForcast, set_location_weather,current_weather, apiKey} = useContext(ApiContext)
     const [isLoading, setIsLoading] = useState(true)
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -55,7 +56,9 @@ export default function WeatherPage(){
 
     return(        
         <div className="weather-background">
-            <div className="middle-flex"><a>Weather</a><a>Heatlh</a></div>
+            <div className="middle-flex">
+                < NavLink className="page-link" to={`/search/weatherpage?location=${location}`}>Weather</ NavLink>
+                < NavLink className="page-link" to={`/search/healthpage?location=${location}`}>Heatlh</ NavLink></div>
             <WeatherSummary api_data={CurrentWeather} />
 
             <div id="main-weather-flex">

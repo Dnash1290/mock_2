@@ -14,3 +14,9 @@
     gap: 4px;
     overflow:auto;
 }
+
+.page-link.active{
+    text-decoration: underline;
+    font-weight: 800;
+    color: red;
+}
