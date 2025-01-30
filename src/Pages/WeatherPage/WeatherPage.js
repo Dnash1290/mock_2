@@ -10,7 +10,7 @@ import { useSearchParams } from "react-router-dom";
 
 
 export default function WeatherPage(){  
-    const {CurrentWeather, WeatherForcast, set_location_weather,current_weather, apiKey} = useContext(ApiContext)
+    const {CurrentWeather, locationWeather, WeatherForcast, set_location_weather,current_weather, apiKey} = useContext(ApiContext)
     const [isLoading, setIsLoading] = useState(true)
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -22,13 +22,12 @@ export default function WeatherPage(){
     useEffect(() => {
 // sir new problem the  isloading function is not updating
         const limit = 3
+
         const ENDPOINT = `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=${limit}&appid=${apiKey}`; 
         axios.get(ENDPOINT)
         .then(response => {
             set_location_weather(response.data)
-            let lat = response.data[0]["lat"]
-            let lon = response.data[0]["lon"]
-            current_weather(lon, lat)
+            current_weather()
             // navigate(`/search/weatherpage?location=${searchLocation}`)
             setIsLoading(false)
             console.log("Set to false")
@@ -42,6 +41,9 @@ export default function WeatherPage(){
         })
     }, [location])
 
+    useEffect(()=> {
+
+    }, [locationWeather])
 
 
     if (isLoading){
