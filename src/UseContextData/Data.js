@@ -51,8 +51,8 @@ export function Api_Data({children}){
     }
 
  
-    let lon = ""
-    let lat = "" 
+    let lon = localStorage.getItem("lon") || null
+    let lat = localStorage.getItem("lat") || null
     
     function weather_forcast(){
     
@@ -71,6 +71,8 @@ export function Api_Data({children}){
      
         lat = cod[0]["lat"]
         lon = cod[0]["lon"]
+        localStorage.setItem("lon", lon)
+        localStorage.setItem("lat", lat)
         console.log("current weather before api call",CurrentWeather)
 
         const ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
@@ -89,11 +91,12 @@ export function Api_Data({children}){
 
     function current_air_pollution(){
         const ENDPOINT = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
-        axios.get(ENDPOINT)
+        
+        return axios.get(ENDPOINT)
         .then(response => {
-            CurrentAirPollution = response.data
-            console.log(CurrentAirPollution)
+            return response.data
         })
+        .catch(error => {return null})
     }
 
     return(<ApiContext.Provider value={
