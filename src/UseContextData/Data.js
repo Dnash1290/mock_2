@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AirPolComponent from "../Components/Health/AirPolComponent";
 
 
 export const Context = createContext()
@@ -42,6 +43,7 @@ export function Api_Data({children}){
     const [WeatherForcast, setWeatherForcast] = useState(
         JSON.parse(localStorage.getItem("weather_forcast")) || null
     )
+    let CurrentAirPollution = null
 
     function set_location_weather(api_data){
         localStorage.setItem("location_weather",JSON.stringify(api_data))
@@ -85,9 +87,19 @@ export function Api_Data({children}){
         weather_forcast()
     }
 
+    function current_air_pollution(){
+        const ENDPOINT = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        axios.get(ENDPOINT)
+        .then(response => {
+            CurrentAirPollution = response.data
+            console.log(CurrentAirPollution)
+        })
+    }
 
     return(<ApiContext.Provider value={
         {locationWeather, set_location_weather, current_weather,
-        CurrentWeather, apiKey, weather_forcast, WeatherForcast}
+        CurrentWeather, apiKey, weather_forcast, WeatherForcast,
+        current_air_pollution, CurrentAirPollution
+    }
     } >{children}</ApiContext.Provider>)
 }

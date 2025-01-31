@@ -1,9 +1,10 @@
 import "./AirPolComponent.css"
 
-export default function AirPolComponent(){
+export default function AirPolComponent(api_data){
+    
     return (
-        <div >
-
+        <div className="circle" >
+            
         </div>
     )
 } 
